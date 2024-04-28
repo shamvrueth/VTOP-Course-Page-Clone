@@ -33,7 +33,7 @@ h1{
 form {
     width: 70%;
     display: grid;
-    grid-template-rows: 1fr 0.5fr;
+    grid-template-rows: 1fr 0.2fr;
     grid-row-gap: 2px;
     /* margin: 0; */
 }
@@ -45,4 +45,33 @@ select{
 
 p{
     margin-top: 5px;
+}
+
+table,th,td{
+    border: 1px solid #000;
+    border-collapse: collapse;
+}
+
+table{
+    text-align: center;
+}
+
+th, td{
+    padding: 15px;
+}
+
+th{
+    background-color: rgb(74, 150, 175);
+    color: white;
+}
+
+button{
+    width: 50px;
+    height: 30px;
+    background-color: rgb(119, 207, 236);
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    /* margin-left: 60px; */
 }
