@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Times New Roman', Times, serif;
+}
+
+body{
+    background: #eee;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    column-gap: 0px;
+    justify-content: center;
+    align-items: left;
+    background-color: #fff;
+    flex-wrap: wrap;
+}
+
+h1{
+    margin-bottom: 10px;
+    font-weight: 100;
+    font-family: 'Poppins';
+}
+
+form {
+    width: 70%;
+    display: grid;
+    grid-template-rows: 1fr 0.5fr;
+    grid-row-gap: 2px;
+    /* margin: 0; */
+}
+
+select{
+    height: 35px;
+    border-radius: 2px;
+}
+
+p{
+    margin-top: 5px;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTOP</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Course page view</h1>
+        
+        <p>Semester name</p>
+        <form action="/" id="form" class="form" method="POST" name="myform">
+          <select name="semester" class="form-select" onchange="myform.submit()">
+            <% if (!locals.k){ %>
+              <option value="" data-display="Select">Choose semester</option>
+            <% } %>
+            <% for (let i=0;i<semester.length;i++){ %>
+            <option value=<%= semester[i].name %>><%= semester[i].name %></option>
+            <% } %>
+          </select>
+        <p>Course</p>
+          <select name="subject" class="form-select" onchange="myform.submit()">
+            <option value="" data-display="Select" >Choose course</option>
+            <% if (locals.subject){ %>
+              <% for (let i=0;i<subject.length;i++){ %>
+              <option value=<%= subject[i].subject_name %>><%= subject[i].subject_name %></option>
+              <% } %>
+            <% } %>
+          </select>
+        </form>
+
+        <p>Filter by slot</p>
+        <form action="/slot" id="form" class="form" method="POST" name="myform">
+            <select name="slot" class="form-select" onchange="myform.submit()">
+              <option value="" data-display="Select">Choose course</option>
+              <option value="education">Differential equations and transforms</option>
+              <option value="education">Structured and object oriented programming</option>
+              <option value="education">Engineering Physics</option>
+            </select>
+          </form>
+        <p>Filter by faculty</p>
+        <form action="/faculty" id="form" class="form" method="POST" name="myform">
+            <select name="faculty" class="form-select" onchange="myform.submit()">
+              <option value="" data-display="Select">Choose course</option>
+              <option value="education">Differential equations and transforms</option>
+              <option value="education">Structured and object oriented programming</option>
+              <option value="education">Engineering Physics</option>
+            </select>
+          </form>
+
+          <table>
+            <tr>
+              <th>Company</th>
+              <th>Contact</th>
+              <th>Country</th>
+            </tr>
+            <tr>
+              <td>Alfreds Futterkiste</td>
+              <td>Maria Anders</td>
+              <td>Germany</td>
+            </tr>
+          </table>
+    </div>
+    <!-- <script>
+      const myForm = document.getElementById("form");
+      document.querySelector(".submit").addEventListener("click", function(){
+
+          myForm.submit();
+
+      });
+    </script> -->
+</body>
+</html>
