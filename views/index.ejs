@@ -11,8 +11,8 @@
         <h1>Course page view</h1>
         
         <p>Semester name</p>
-        <form action="/" id="form" class="form" method="POST" name="myform">
-          <select name="semester" class="form-select" onchange="myform.submit()">
+        <form action="/" id="form" class="form" method="POST" name="sem">
+          <select name="semester" class="form-select" onchange="sem.submit()">
             <% if (!locals.k){ %>
               <option value="" data-display="Select">Choose semester</option>
             <% } %>
@@ -20,9 +20,14 @@
             <option value=<%= semester[i].name %>><%= semester[i].name %></option>
             <% } %>
           </select>
+        </form>
+
         <p>Course</p>
-          <select name="subject" class="form-select" onchange="myform.submit()">
+        <form action="/course" id="form" class="form" method="POST" name="course">
+          <select name="subject" class="form-select" onchange="course.submit()">
+            <% if (!locals.c){ %>
             <option value="" data-display="Select" >Choose course</option>
+            <% } %>
             <% if (locals.subject){ %>
               <% for (let i=0;i<subject.length;i++){ %>
               <option value=<%= subject[i].subject_name %>><%= subject[i].subject_name %></option>
@@ -32,36 +37,59 @@
         </form>
 
         <p>Filter by slot</p>
-        <form action="/slot" id="form" class="form" method="POST" name="myform">
-            <select name="slot" class="form-select" onchange="myform.submit()">
-              <option value="" data-display="Select">Choose course</option>
-              <option value="education">Differential equations and transforms</option>
-              <option value="education">Structured and object oriented programming</option>
-              <option value="education">Engineering Physics</option>
+        <form action="/slot" id="form" class="form" method="POST" name="selectSlot">
+            <select name="slot" class="form-select" onchange="selectSlot.submit()">
+              <% if (!locals.x){ %>
+                <option value="" data-display="Select" >Choose course</option>
+              <% } %>
+              <% if(locals.slot){ %>
+                <% for (let i=0;i<slot.length;i++){ %>
+                <option value=<%= slot[i].slot %>><%= slot[i].slot %></option>
+                <% } %>
+              <% } %>
             </select>
-          </form>
-        <p>Filter by faculty</p>
-        <form action="/faculty" id="form" class="form" method="POST" name="myform">
-            <select name="faculty" class="form-select" onchange="myform.submit()">
-              <option value="" data-display="Select">Choose course</option>
-              <option value="education">Differential equations and transforms</option>
-              <option value="education">Structured and object oriented programming</option>
-              <option value="education">Engineering Physics</option>
-            </select>
-          </form>
+        </form>
 
-          <table>
+        <p>Filter by faculty</p>
+        <form action="/faculty" id="form" class="form" method="POST" name="selectedFaculty">
+            <select name="faculty" class="form-select" onchange="selectedFaculty.submit()">
+              <% if (!locals.y){ %>
+                <option value="" data-display="Select" >Choose course</option>
+              <% } %>
+              <% if(locals.slot){ %>
+                <% for (let i=0;i<slot.length;i++){ %>
+                <option value=<%= slot[i].faculty %>><%= slot[i].faculty %></option>
+                <% } %>
+              <% } %>
+            </select>
+        </form>
+
+        <% if (locals.c){ %>
+        <table>
             <tr>
-              <th>Company</th>
-              <th>Contact</th>
-              <th>Country</th>
+              <th>SI no</th>
+              <th>Course Title</th>
+              <th>Slot</th>
+              <th>Faculty</th>
+              <th>Action</th>
             </tr>
+            <% if (locals.slot) { %>
+            <% for (let i=0;i<slot.length;i++){ %>
             <tr>
-              <td>Alfreds Futterkiste</td>
-              <td>Maria Anders</td>
-              <td>Germany</td>
+              <td><%= i+1 %></td>
+              <td><%= slot[i].subject_name %></td>
+              <td><%= slot[i].slot %></td>
+              <td><%= slot[i].faculty %></td>
+              <td>
+                <form method="POST" action="/download">
+                  <button type="submit" name="faculty" value=<%= slot[i].faculty %>>View</button>
+                </form>
+              </td>
             </tr>
+            <% } %>
+            <% } %>
           </table>
+          <% } %>
     </div>
     <!-- <script>
       const myForm = document.getElementById("form");
