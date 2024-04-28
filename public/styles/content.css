@@ -1,0 +1,25 @@
+body{
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table,th,td{
+    border: 1px solid #000;
+    border-collapse: collapse;
+}
+
+table{
+    text-align: center;
+    width: 1000px;
+}
+
+th, td{
+    padding: 15px;
+}
+
+th{
+    background-color: rgb(74, 150, 175);
+    color: white;
+}
